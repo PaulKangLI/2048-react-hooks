@@ -1,4 +1,3 @@
-import { useEffect } from "react";
 import { shallowEqual, useSelector } from "react-redux";
 import Tile from "./Tile";
 
@@ -10,11 +9,6 @@ const Board = () => {
     }),
     shallowEqual
   );
-
-  useEffect(() => {
-    console.log(row, "row");
-    console.log(column, "column");
-  }, [row, column]);
 
   return (
     <div className="board">

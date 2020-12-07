@@ -1,4 +1,3 @@
-import { useEffect } from "react";
 import { shallowEqual, useSelector } from "react-redux";
 
 export const Tile = (props) => {
@@ -8,10 +7,6 @@ export const Tile = (props) => {
     }),
     shallowEqual
   );
-
-  useEffect(() => {
-    console.log(props.tile.value, "props");
-  }, [props]);
 
   const tileClass = () => {
     const { value } = props.tile;

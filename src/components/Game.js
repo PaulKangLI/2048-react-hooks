@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import Board from "./Board";
 import Tile from "./Tile";
 import addSwipeListenner from "../utils/swipe.js";
-// const LOG = window._env_.LOG;
+const LOG = window._env_.LOG;
 
 const Game = forwardRef((props, ref) => {
   const {
@@ -90,20 +90,20 @@ const Game = forwardRef((props, ref) => {
       let maxValue = 0;
       for (let i = 0; i < row; i++) {
         for (let j = 0; j < column; j++) {
-          window.console.log(grids[i][j], i, j);
+          LOG && window.console.log(grids[i][j], i, j);
           if (maxValue < grids[i][j]) {
             maxValue = grids[i][j];
           }
         }
       }
-      return maxValue === winTileValue;
+      return maxValue === localState.current.winTileValue;
     }
   };
   const canTilesSlideUp = () => {
-    window.console.log(localState.current, "localState");
+    LOG && window.console.log(localState.current, "localState");
     const [row, column] = localState.current.boardSize;
     let grids = [...localState.current.grids];
-    window.console.log(grids, "grids");
+    LOG && window.console.log(grids, "grids");
     for (let i = 0; i < column; i++) {
       for (let j = 0; j < row - 1; j++) {
         // LOG && window.console.log(j, i, "grid");
@@ -121,12 +121,12 @@ const Game = forwardRef((props, ref) => {
   const canTilesSlideDown = () => {
     const [row, column] = localState.current.boardSize;
     let grids = [...localState.current.grids];
-    // window.console.log(grids, "grids");
+    // LOG && window.console.log(grids, "grids");
     for (let i = 0; i < column; i++) {
       for (let j = 0; j < row - 1; j++) {
-        // window.console.log(grids[j + 1][i], j, i, "grid");
-        // window.console.log(grids[j][i], j, i, "grid");
-        //The tile itself is not 0, it is the same as its up neighbor
+        // LOG && window.console.log(grids[j + 1][i], j, i, "grid");
+        // LOG && window.console.log(grids[j][i], j, i, "grid");
+        // The tile itself is not 0, it is the same as its up neighbor
         if (grids[j + 1][i] > 0 && grids[j + 1][i] === grids[j][i]) return true;
         // The tile itself is 0, its up neighbor is not 0
         if (grids[j + 1][i] === 0 && grids[j][i] > 0) return true;
@@ -137,14 +137,14 @@ const Game = forwardRef((props, ref) => {
   const canTilesSlideLeft = () => {
     const [row, column] = localState.current.boardSize;
     let grids = [...localState.current.grids];
-    // window.console.log(grids, "grids");
+    // LOG && window.console.log(grids, "grids");
     for (let i = 0; i < row; i++) {
       for (let j = 0; j < column - 1; j++) {
-        // window.console.log(grids[i][j + 1], i, j, "grid");
-        // window.console.log(grids[i][j], i, j, "grid");
+        // LOG && window.console.log(grids[i][j + 1], i, j, "grid");
+        // LOG && window.console.log(grids[i][j], i, j, "grid");
         // The tile itself is 0, its right neighbor is not 0
         if (grids[i][j] === 0 && grids[i][j + 1] > 0) return true;
-        //The tile itself is not 0, it is the same as its right neighbor
+        // The tile itself is not 0, it is the same as its right neighbor
         if (grids[i][j] > 0 && grids[i][j] === grids[i][j + 1]) return true;
       }
     }
@@ -153,21 +153,21 @@ const Game = forwardRef((props, ref) => {
   const canTilesSlideRight = () => {
     const [row, column] = localState.current.boardSize;
     let grids = [...localState.current.grids];
-    window.console.log(grids, "grids");
+    LOG && window.console.log(grids, "grids");
     for (let i = 0; i < row; i++) {
       for (let j = 0; j < column - 1; j++) {
-        // window.console.log(grids[i][j], i, j, "grid");
-        // window.console.log(grids[i][j + 1], i, j, "grid");
+        // LOG && window.console.log(grids[i][j], i, j, "grid");
+        // LOG && window.console.log(grids[i][j + 1], i, j, "grid");
         // The tile itself is 0, its left neighbor is not 0
         if (grids[i][j + 1] === 0 && grids[i][j] > 0) return true;
-        //The tile itself is not 0, it is the same as its left neighbor
+        // The tile itself is not 0, it is the same as its left neighbor
         if (grids[i][j + 1] > 0 && grids[i][j + 1] === grids[i][j]) return true;
       }
     }
     return false;
   };
   const generateOneRandomTile = () => {
-    console.log(localState.current.isCollided, "isCollided");
+    LOG && console.log(localState.current.isCollided, "isCollided");
     if (!localState.current.isCollided)
       dispatch({
         type: "ADD_NEW_GRID_TILE",
@@ -175,7 +175,7 @@ const Game = forwardRef((props, ref) => {
       });
   };
   const move = (direction) => {
-    console.log(direction, "direction");
+    LOG && console.log(direction, "direction");
     switch (direction) {
       case "ArrowUp": {
         if (canTilesSlideUp()) {
@@ -197,7 +197,7 @@ const Game = forwardRef((props, ref) => {
         break;
       }
       case "ArrowDown": {
-        window.console.log("ArrowDown");
+        LOG && window.console.log("ArrowDown");
         if (canTilesSlideDown()) {
           dispatch({
             type: "TILES_SLIDE_DOWN",
@@ -217,7 +217,7 @@ const Game = forwardRef((props, ref) => {
         break;
       }
       case "ArrowLeft": {
-        window.console.log("ArrowLeft");
+        LOG && window.console.log("ArrowLeft");
         if (canTilesSlideLeft()) {
           dispatch({
             type: "TILES_SLIDE_LEFT",
@@ -237,7 +237,7 @@ const Game = forwardRef((props, ref) => {
         break;
       }
       case "ArrowRight": {
-        window.console.log("ArrowRight");
+        LOG && window.console.log("ArrowRight");
         if (canTilesSlideRight()) {
           dispatch({
             type: "TILES_SLIDE_RIGHT",
@@ -257,7 +257,7 @@ const Game = forwardRef((props, ref) => {
         break;
       }
       default:
-        window.console.log("Something went wrong!");
+        LOG && window.console.log("Something went wrong!");
     }
     if (isGameOver()) {
       document.removeEventListener("keydown", onKeyDown);
@@ -270,8 +270,8 @@ const Game = forwardRef((props, ref) => {
   };
 
   const gameViewStyle = () => {
-    window.console.log(tiles, "tiles");
-    window.console.log(grids, "grids");
+    LOG && window.console.log(tiles, "tiles");
+    LOG && window.console.log(grids, "grids");
     return {
       width: props.width - 20 + "px",
       height: props.width - 20 + "px",

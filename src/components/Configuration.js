@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from "react";
 import { shallowEqual, useDispatch, useSelector } from "react-redux";
 import SelectBox from "./SelectBox";
+const LOG = window._env_.LOG;
 
 const Configuration = (props) => {
   const {
@@ -37,13 +38,6 @@ const Configuration = (props) => {
     maxUndoStepsAmount
   );
 
-  useEffect(() => {
-    console.log(row, "row");
-    console.log(column, "column");
-    console.log(winTileValue, "winTileValue");
-    console.log(maxUndoStepsAmount, "maxUndoStepsAmount");
-  }, [row, column, winTileValue, maxUndoStepsAmount]);
-
   const restartGame = () => {
     dispatch({
       type: "INIT_GRIDS_Tiles",
@@ -62,7 +56,7 @@ const Configuration = (props) => {
 
   const onChangeRow = (event) => {
     const row = parseInt(event.target.value);
-    window.console.log(row);
+    LOG && window.console.log(row);
     setRowSize(row);
     dispatch({ type: "SET_ROW", playload: row });
     restartGame();
@@ -70,7 +64,7 @@ const Configuration = (props) => {
 
   const onChangeColumn = (event) => {
     const column = parseInt(event.target.value);
-    window.console.log(column);
+    LOG && window.console.log(column);
     setColumnSize(column);
     dispatch({ type: "SET_COLUMN", playload: column });
     restartGame();
@@ -78,7 +72,7 @@ const Configuration = (props) => {
 
   const onChangeGoal = (event) => {
     const goal = parseInt(event.target.value);
-    window.console.log(goal);
+    LOG && window.console.log(goal);
     setGoal(goal);
     dispatch({ type: "SET_GOAL", playload: goal });
     restartGame();
@@ -86,7 +80,7 @@ const Configuration = (props) => {
 
   const onChangeUndoSteps = (event) => {
     const maxUndoStepsAmount = parseInt(event.target.value);
-    window.console.log(maxUndoStepsAmount);
+    LOG && window.console.log(maxUndoStepsAmount);
     setmaxUndoStepsAmount(maxUndoStepsAmount);
     dispatch({
       type: "SET_MAX_UNDO_STEPS_AMOUNT",

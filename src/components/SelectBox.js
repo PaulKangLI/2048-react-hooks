@@ -1,8 +1,4 @@
-import { useEffect } from "react";
-
 const SelectBox = (props) => {
-  useEffect(() => {}, []);
-
   return (
     <div>
       <label htmlFor="standard-select">{props.label}</label>
