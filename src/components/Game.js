@@ -83,8 +83,7 @@ const Game = forwardRef((props, ref) => {
     );
   };
   const isWin = () => {
-    window.console.log(keepGoing, "keepGoing");
-    if (!keepGoing) {
+    if (!localState.current.keepGoing) {
       const [row, column] = localState.current.boardSize;
       let grids = [...localState.current.grids];
       let maxValue = 0;
