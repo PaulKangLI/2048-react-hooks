@@ -59,7 +59,7 @@ const Game = forwardRef((props, ref) => {
       }
     }
     return () => document.removeEventListener("keydown", onKeyDown);
-  }, []);
+  });
 
   useImperativeHandle(ref, () => ({
     addKeyboard() {
