@@ -1,0 +1,245 @@
+#root {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-text-size-adjust: 100%;
+  font-variant-ligatures: none;
+  -webkit-font-variant-ligatures: none;
+  text-rendering: optimizeLegibility;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  box-sizing: border-box;
+  touch-action: manipulation;
+  .container {
+    font-size: 16px;
+  }
+  @media screen and (max-width: 320px) {
+    .container {
+      font-size: 8px;
+    }
+  }
+  @media screen and (min-width: 320px) and (max-width: 360px) {
+    .container {
+      font-size: 9px;
+    }
+  }
+  @media screen and (min-width: 360px) and (max-width: 400px) {
+    .container {
+      font-size: 11px;
+    }
+  }
+  @media screen and (min-width: 400px) and (max-width: 440px) {
+    .container {
+      font-size: 13px;
+    }
+  }
+  @media screen and (min-width: 440px) and (max-width: 500px) {
+    .container {
+      font-size: 13px;
+    }
+  }
+  @media screen and (min-width: 500px) {
+    .container {
+      font-size: 14px;
+    }
+  }
+  .container {
+    color: #776e65;
+    font-weight: bold;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    max-width: 500px;
+    margin: 0 auto;
+    padding: 0 10px;
+    height: 100%;
+    .header {
+      margin-top: 2em;
+      display: flex;
+      flex-direction: column;
+      h1 {
+        font-size: 5em;
+        margin: 0;
+        display: inline-block;
+      }
+      .scores {
+        float: right;
+        display: flex;
+        .score {
+          padding: 0.4em 0.4em;
+          position: relative;
+          background: #bbada0;
+          font-weight: bold;
+          border-radius: 3px;
+          color: white;
+          margin-top: 1.4em;
+          margin-left: 0.8em;
+          text-align: center;
+        }
+        .current-score {
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+        }
+        .score .name {
+          font-size: 1em;
+          color: #eee4da;
+        }
+        .score .value {
+          font-size: 1.5em;
+        }
+      }
+      .configuration {
+        display: flex;
+        text-align: center;
+        padding-top: 1.4em;
+        font-size: 1em;
+        white-space: nowrap;
+        justify-content: flex-end;
+      }
+      .menu-section {
+        text-align: right;
+        padding: 1.4em 0;
+        font-size: 1em;
+        white-space: nowrap;
+      }
+    }
+    .game-view {
+      display: flex;
+      flex: 1 0 auto;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      .game-board {
+        border: solid 0.4em #bbad9f;
+        box-sizing: border-box;
+        position: relative;
+        background: #bbad9f;
+        border-radius: 5px;
+        .tile {
+          position: absolute;
+          box-sizing: border-box;
+          text-align: center;
+          font-weight: bold;
+          padding: 0.4em;
+        }
+        .value {
+          transition-property: all;
+          transition-duration: inherit;
+          height: 100%;
+          border-radius: 5px;
+          overflow: hidden;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          color: #f9f6f2;
+          background-color: #ccc1b4;
+        }
+        .value.appear-enter-active {
+          animation: zoomIn 160ms;
+        }
+        @keyframes zoomIn {
+          0% {
+            opacity: 0;
+          }
+          50% {
+            opacity: 0;
+            transform: scale3d(0.3, 0.3, 0.3);
+          }
+          75% {
+            opacity: 1;
+          }
+        }
+        .tile.tile-2 .value {
+          color: #776e65;
+          background: #eee4da;
+          font-size: 5em;
+        }
+        .tile.tile-4 .value {
+          color: #776e65;
+          background: #ede0c8;
+          font-size: 5em;
+        }
+        .tile.tile-8 .value {
+          background: #f2b179;
+          font-size: 5em;
+        }
+        .tile.tile-16 .value {
+          background: #f59563;
+          font-size: 4em;
+        }
+        .tile.tile-32 .value {
+          background: #f67c5f;
+          font-size: 4em;
+        }
+        .tile.tile-64 .value {
+          background: #f65e3b;
+          font-size: 4em;
+        }
+        .tile.tile-128 .value {
+          background: #edcf72;
+          font-size: 3em;
+        }
+        .tile.tile-256 .value {
+          background: #edcc61;
+          font-size: 3em;
+        }
+        .tile.tile-512 .value {
+          background: #edc850;
+          font-size: 3em;
+        }
+        .tile.tile-1024 .value {
+          background: #edc53f;
+          font-size: 2.5em;
+        }
+        .tile.tile-2048 .value {
+          background: #edc22e;
+          font-size: 2.5em;
+        }
+        .tile.tile-4096 .value {
+          background: #00bcd4;
+          font-size: 2.5em;
+        }
+        .tile.tile-8192 .value {
+          background: #03a9f4;
+          font-size: 2.5em;
+        }
+        .tile.tile-16384 .value {
+          background: #1e88e5;
+          font-size: 2em;
+        }
+        .tile.tile-higher .value {
+          background: #3f51b5;
+          font-size: 2em;
+        }
+      }
+    }
+    .game-end {
+      border-radius: 5px;
+      background: red;
+      position: absolute;
+      margin: -0.4em;
+      width: calc(100% + 0.8em);
+      height: calc(100% + 0.8em);
+      z-index: 99999999;
+      font-size: inherit;
+      background: rgba(238, 228, 218, 0.73);
+      text-align: center;
+      .text {
+        font-size: 2em;
+        text-align: center;
+        height: 70%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: white;
+      }
+    }
+    .win {
+      background: rgba(237, 194, 46, 0.5);
+      color: #f9f6f2;
+    }
+  }
+}
