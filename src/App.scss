@@ -136,22 +136,44 @@
           align-items: center;
           color: #f9f6f2;
           background-color: #ccc1b4;
-        }
-        .value.appear-enter-active {
-          animation: zoomIn 160ms;
-        }
-        @keyframes zoomIn {
-          0% {
-            opacity: 0;
+          .tile-node-enter {
+            animation: zoomIn 160ms;
           }
-          50% {
-            opacity: 0;
-            transform: scale3d(0.3, 0.3, 0.3);
-          }
-          75% {
-            opacity: 1;
+          // .tile-node-enter {
+          //   opacity: 0.01;
+          //   transform: scale(1.1);
+          //   // animation: zoomIn 160ms;
+          // }
+          // .tile-node-enter.tile-node-enter-active {
+          //   opacity: 1;
+          //   // transform: scale(1);
+          //   // transition: all 300ms;
+          //   transition: opacity 1000ms ease-in;
+          // }
+          // .tile-node-exit {
+          //   opacity: 1;
+          //   // transform: scale(1);
+          // }
+          // .tile-node-exit.tile-node-exit-active {
+          //   opacity: 0.01;
+          //   // transform: scale(1.1);
+          //   // transition: all 300ms;
+          //   transition: opacity 800ms ease-in;
+          // }
+          @keyframes zoomIn {
+            0% {
+              opacity: 0;
+            }
+            50% {
+              opacity: 0;
+              transform: scale3d(0.3, 0.3, 0.3);
+            }
+            75% {
+              opacity: 1;
+            }
           }
         }
+
         .tile.tile-2 .value {
           color: #776e65;
           background: #eee4da;

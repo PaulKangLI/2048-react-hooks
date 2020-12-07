@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import { shallowEqual, useSelector } from "react-redux";
+import { CSSTransition } from "react-transition-group";
 
 export const Tile = (props) => {
   const { boardSize } = useSelector(
@@ -32,7 +33,13 @@ export const Tile = (props) => {
     return (
       <div className="tile-item">
         <div className={"tile " + tileClass()} style={tileStyle()}>
-          <div className="value">{props.tile.value ?? props.tile.value}</div>
+          <CSSTransition
+            in={props.tile.value != null}
+            timeout={1000}
+            classNames="tile-node"
+          >
+            <div className="value">{props.tile.value ?? props.tile.value}</div>
+          </CSSTransition>
         </div>
       </div>
     );
