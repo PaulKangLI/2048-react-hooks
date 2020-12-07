@@ -1,70 +1,99 @@
-# Getting Started with Create React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+# 2048-react
 
-In the project directory, you can run:
+### About
 
-### `npm start`
+a clone of 2048 game
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+### Technology stack
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+- React
+- React Hooks
+- Redux
+- SASS
+- Vanilla JavaScript
 
-### `npm test`
+## Project setup
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+```
+npm install
+```
 
-### `npm run build`
+### Compiles and hot-reloads for development
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+```
+npm run start
+```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### Compiles and minifies for production
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+```
+npm run build
+```
 
-### `npm run eject`
+### Run test
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+```
+npm run test
+```
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+### Features
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+- A board that is randomly populated with two tiles
 
-## Learn More
+- The game can be stored across browser sessions
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+- Move the tiles when user presses arrow keys
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+- Generate new tiles for every turn
 
-### Code Splitting
+- Merge two colliding tiles into one
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+- Touch/mobile support
 
-### Analyzing the Bundle Size
+- Display a message when the game is ‘won’ or 'game over'
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+- The number of row and column, the goal, and the amout of undo can be configured
 
-### Making a Progressive Web App
+- The current score and best score
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+- Restart the game and undo
 
-### Advanced Configuration
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+### TODO
+- [ ] More Tests
+- [ ] Offline play
 
-### Deployment
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
 
-### `npm run build` fails to minify
+```
+ tiles: [
+   { row: 0, column: 0, value: 2 },
+   { row: 0, column: 1, value: 4 },
+   { row: 0, column: 2, value: 8 },
+   { row: 0, column: 3, value: 16 },
+   { row: 1, column: 0, value: 32 },
+   { row: 1, column: 1, value: 64 },
+   { row: 1, column: 2, value: 128 },
+   { row: 1, column: 3, value: 256 },
+   { row: 2, column: 0, value: 512 },
+   { row: 2, column: 1, value: 1024 },
+   { row: 2, column: 2, value: 2048 },
+   { row: 2, column: 3, value: 4096 },
+   { row: 3, column: 0, value: 8192 },
+   { row: 3, column: 1, value: 16384 },
+   { row: 3, column: 2, value: 32768 },
+   { row: 3, column: 3, value: 65536 },
+ ],
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
+ grids: [
+   [2, 4, 8, 16],
+   [32, 64, 128, 256],
+   [512, 1024, 2048, 4096],
+   [8192, 16384, 32768, 65536],
+ ],
+```
+
