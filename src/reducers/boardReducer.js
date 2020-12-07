@@ -1,3 +1,5 @@
+const LOG = window._env_.LOG;
+
 const initState = {
   winTileValue: 2048,
   boardSize: [4, 4], //row, column
@@ -21,7 +23,7 @@ const boardReducer = (state = initState, action) => {
         ...state,
       };
     case "SET_GOAL":
-      console.log(state.winTileValue, "winTileValue");
+      LOG && console.log(state.winTileValue, "winTileValue");
       return {
         ...state,
         winTileValue: action.playload,

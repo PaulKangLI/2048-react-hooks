@@ -1,3 +1,5 @@
+const LOG = window._env_.LOG;
+
 const initState = {
   tiles: [],
   grids: [],
@@ -89,7 +91,7 @@ const tilesReducer = (state = initState, action) => {
       };
     }
     case "ADD_NEW_GRID_TILE": {
-      console.log("ADD_NEW_GRID_TILE");
+      LOG && console.log("ADD_NEW_GRID_TILE");
       const [row, column] = action.boardSize;
       let emptyTiles = [];
       for (let x = 0; x < row; x++) {
@@ -102,13 +104,13 @@ const tilesReducer = (state = initState, action) => {
             });
         }
       }
-      console.log(emptyTiles, "emptyTiles");
+      LOG && console.log(emptyTiles, "emptyTiles");
       if (emptyTiles.length > 0) {
         const randomTile =
           emptyTiles[Math.floor(Math.random() * emptyTiles.length)];
-        console.log(randomTile, "randomTile");
+        LOG && console.log(randomTile, "randomTile");
         const randomValue = random2_4();
-        console.log(randomValue, "randomValue");
+        LOG && console.log(randomValue, "randomValue");
         state.grids[randomTile.x][randomTile.y] = randomValue;
         state.tiles.push({
           row: randomTile.x,
